@@ -43,5 +43,12 @@ public class RobotService {
     robotRepository.softDeleteByProductId(productId);
   }
 
+  public Iterable<Robot> findBin() {
+    return robotRepository.findBin();
+  }
+
+  public Iterable<Robot> findAllNotDeleted() {
+    return robotRepository.findAllNotDeleted();
+  }
 
 }

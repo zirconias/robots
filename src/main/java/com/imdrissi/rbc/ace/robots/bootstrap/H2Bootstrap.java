@@ -64,10 +64,11 @@ public class H2Bootstrap implements CommandLineRunner {
     admin.setAuthorities(adminAuthorities);
     userRepository.save(user);
 
+    robotService.softDeleteByProductId(robot1.getProductId());
 
-//    Iterable<Robot> itr = robotService.allRobots();
-//    for (Robot r : itr) {
-//      log.info("product: " + r.getDescription());
-//    }
+    Iterable<Robot> itr = robotService.allRobots();
+    for (Robot r : itr) {
+      log.info("product: " + r.getDescription());
+    }
   }
 }

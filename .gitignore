@@ -1,6 +1,12 @@
 target/
 !.mvn/wrapper/maven-wrapper.jar
 
+frontend/dist
+frontend/node_modules/
+
+#maven frontend plugin
+frontend/node/
+
 ### STS ###
 .apt_generated
 .classpath

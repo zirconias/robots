@@ -4,7 +4,8 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-public class Robot {
+@Table(name = "ROBOT")
+public class Robot extends BaseEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
@@ -16,6 +17,17 @@ public class Robot {
   private String description;
   private String imageUrl;
   private BigDecimal price;
+
+  public Robot() {
+    super();
+  }
+
+  public Robot(String productId, String description, String imageUrl, BigDecimal price) {
+    this.productId = productId;
+    this.description = description;
+    this.imageUrl = imageUrl;
+    this.price = price;
+  }
 
   public String getDescription() {
     return description;

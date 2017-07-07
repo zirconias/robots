@@ -5,6 +5,7 @@ import com.imdrissi.rbc.ace.robots.domain.Robot;
 import com.imdrissi.rbc.ace.robots.repository.RobotRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class RobotService {
@@ -22,12 +23,19 @@ public class RobotService {
     return robotRepository.findOne(id);
   }
 
+  @Transactional
   public Robot saveRobot(Robot robot) {
     return robotRepository.save(robot);
   }
 
+  @Transactional
   public void deleteRobot(Long id) {
     robotRepository.delete(id);
+  }
+
+  @Transactional
+  public void deleteByProductId(String productid) {
+    robotRepository.deleteByProductId(productid);
   }
 
 

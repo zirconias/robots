@@ -1,6 +1,9 @@
 package com.imdrissi.rbc.ace.robots.bootstrap;
 
+import com.imdrissi.rbc.ace.robots.domain.Authority;
 import com.imdrissi.rbc.ace.robots.domain.Robot;
+import com.imdrissi.rbc.ace.robots.domain.User;
+import com.imdrissi.rbc.ace.robots.repository.UserRepository;
 import com.imdrissi.rbc.ace.robots.service.RobotService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,6 +13,8 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Profile({"dev", "test"})
 @Component
@@ -18,6 +23,8 @@ public class H2Bootstrap implements CommandLineRunner {
 
   @Autowired
   RobotService robotService;
+  @Autowired
+  UserRepository userRepository;
 
   @Override
   public void run(String... strings) throws Exception {
@@ -39,9 +46,28 @@ public class H2Bootstrap implements CommandLineRunner {
     robot2.setPrice(new BigDecimal("11.95"));
     robotService.saveRobot(robot2);
 
-    Iterable<Robot> itr = robotService.allRobots();
-    for (Robot r : itr) {
-      log.info("product: " + r.getDescription());
-    }
+    Authority auth1 = new Authority("ADMIN");
+    Authority auth2 = new Authority("MANAGER");
+    Authority auth3 = new Authority("USER");
+    List<Authority> adminAuthorities = new ArrayList<>();
+    List<Authority> userAuthorities = new ArrayList<>();
+    adminAuthorities.add(auth1);
+    adminAuthorities.add(auth2);
+    userAuthorities.add(auth3);
+
+
+    User admin = new User("admin", "admin");
+    admin.setAuthorities(adminAuthorities);
+    userRepository.save(admin);
+
+    User user = new User("user", "user");
+    admin.setAuthorities(adminAuthorities);
+    userRepository.save(user);
+
+
+//    Iterable<Robot> itr = robotService.allRobots();
+//    for (Robot r : itr) {
+//      log.info("product: " + r.getDescription());
+//    }
   }
 }

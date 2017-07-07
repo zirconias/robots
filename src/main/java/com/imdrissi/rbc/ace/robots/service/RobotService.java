@@ -38,5 +38,10 @@ public class RobotService {
     robotRepository.deleteByProductId(productid);
   }
 
+  @Transactional
+  public void softDeleteByProductId(String productId) {
+    robotRepository.softDeleteByProductId(productId);
+  }
+
 
 }

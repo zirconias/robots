@@ -34,13 +34,13 @@ public class RobotService {
   }
 
   @Transactional
-  public void deleteByProductId(String productid) {
-    robotRepository.deleteByProductId(productid);
+  public void deleteByRobotId(String robotId) {
+    robotRepository.deleteByRobotId(robotId);
   }
 
   @Transactional
-  public void softDeleteByProductId(String productId) {
-    robotRepository.softDeleteByProductId(productId);
+  public void softDeleteByRobotId(String robotId) {
+    robotRepository.softDeleteByRobotId(robotId);
   }
 
   public Iterable<Robot> findBin() {
@@ -51,4 +51,15 @@ public class RobotService {
     return robotRepository.findAllNotDeleted();
   }
 
+  public Robot getRobotByRobotId(String robotId) {
+    return robotRepository.findByRobotId(robotId);
+  }
+
+  public Robot findByRobotId(String robotId) {
+    return robotRepository.findByRobotId(robotId);
+  }
+
+  public Robot updateRobot(Robot currentRobot) {
+    return robotRepository.save(currentRobot);
+  }
 }

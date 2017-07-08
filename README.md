@@ -10,7 +10,7 @@
 ### backend
 
 - [x] Create a backend java app using spring boot
-- [ ] rest web services
+- [x] rest web services
 - [x] json request/response payloads
 - [x] robot store data persisted in data store, accessed via jpa 
 

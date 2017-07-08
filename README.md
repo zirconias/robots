@@ -1,19 +1,19 @@
 #ACE -  ROBOTS
 
 
+### backend
 
+- [x] Create a backend java app using spring boot
+- [ ] rest web services
+- [x] json request/response payloads
+- [x] robot store data persisted in data store, accessed via jpa 
 
-[http://localhost:8080/api/swagger-ui.html#/]
+### Data Persistence
+- [x] in memory (H2 for dev profile)
 
+### Scope
+- [x] list,find,add,delete robots from store see [swaager-ui](http://localhost:8080/swagger-ui.html)
 
-### Solar System Exploration, 1950s – 1960s
-
-- [ ] Mercury
-- [x] Venus
-- [x] Earth (Orbit/Moon)
-- [x] Mars
-- [ ] Jupiter
-- [ ] Saturn
-- [ ] Uranus
-- [ ] Neptune
-- [ ] Comet Haley
+### Stretch Goals:
+- [ ] deployment in cloud platform
+- [ ] authorization

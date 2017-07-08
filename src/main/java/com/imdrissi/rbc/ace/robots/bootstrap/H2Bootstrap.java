@@ -3,6 +3,7 @@ package com.imdrissi.rbc.ace.robots.bootstrap;
 import com.imdrissi.rbc.ace.robots.domain.Authority;
 import com.imdrissi.rbc.ace.robots.domain.Robot;
 import com.imdrissi.rbc.ace.robots.domain.User;
+import com.imdrissi.rbc.ace.robots.repository.AuthorityRepository;
 import com.imdrissi.rbc.ace.robots.repository.UserRepository;
 import com.imdrissi.rbc.ace.robots.service.RobotService;
 import org.slf4j.Logger;
@@ -15,7 +16,7 @@ import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 
 @Profile({"dev", "test"})
 @Component
@@ -26,19 +27,54 @@ public class H2Bootstrap implements CommandLineRunner {
   RobotService robotService;
   @Autowired
   UserRepository userRepository;
+  @Autowired
+  AuthorityRepository authorityRepository;
 
   @Override
   public void run(String... strings) throws Exception {
-    log.info("populating dev data tables");
+    initAuthorities();
+    initUsers();
+    initRobots();
+  }
 
+
+  private void initUsers() {
+    log.info("bootstrap users");
+    Authority adminAuth = authorityRepository.findByName("ADMIN");
+    Authority userAuth = authorityRepository.findByName("USER");
+    Authority managerAuth = authorityRepository.findByName("MANAGER");
+
+    User admin = new User("admin", new BCryptPasswordEncoder().encode("admin"));
+    admin.setAuthorities(new ArrayList<>(Arrays.asList(adminAuth, managerAuth)));
+    userRepository.save(admin);
+
+    User manager = new User("manager", new BCryptPasswordEncoder().encode("manager"));
+    manager.setAuthorities(new ArrayList<>(Arrays.asList(managerAuth)));
+    userRepository.save(manager);
+
+    User user = new User("user", new BCryptPasswordEncoder().encode("user"));
+    user.setAuthorities(new ArrayList<>(Arrays.asList(userAuth)));
+    userRepository.save(user);
+  }
+
+  private void initAuthorities() {
+    log.info("bootstrap authorities");
+    Authority adminAuth = new Authority("ADMIN");
+    Authority managerAuth = new Authority("MANAGER");
+    Authority userAuth = new Authority("USER");
+    authorityRepository.saveAndFlush(adminAuth);
+    authorityRepository.saveAndFlush(managerAuth);
+    authorityRepository.saveAndFlush(userAuth);
+  }
+
+  private void initRobots() {
+    log.info("bootstrap robots");
     Robot robot1 = new Robot();
     robot1.setDescription("Guru");
     robot1.setPrice(new BigDecimal("18.95"));
     robot1.setImageUrl("http://www.mobile.guru/wp-content/uploads/2015/10/shutterstock_137265305.jpg");
     robot1.setProductId("235268845711068308");
     robotService.saveRobot(robot1);
-
-    log.info("Saved Shirt - id: " + robot1.getId());
 
     Robot robot2 = new Robot();
     robot2.setDescription("Guru pro");
@@ -47,27 +83,5 @@ public class H2Bootstrap implements CommandLineRunner {
     robot2.setPrice(new BigDecimal("11.95"));
     robotService.saveRobot(robot2);
 
-    Authority auth1 = new Authority("ADMIN");
-    Authority auth2 = new Authority("MANAGER");
-    Authority auth3 = new Authority("USER");
-    List<Authority> adminAuthorities = new ArrayList<>();
-    List<Authority> userAuthorities = new ArrayList<>();
-    adminAuthorities.add(auth1);
-    adminAuthorities.add(auth2);
-    userAuthorities.add(auth3);
-
-
-    User admin = new User("admin", new BCryptPasswordEncoder().encode("admin"));
-    admin.setAuthorities(adminAuthorities);
-    userRepository.save(admin);
-
-    User user = new User("user", new BCryptPasswordEncoder().encode("user"));
-    admin.setAuthorities(adminAuthorities);
-    userRepository.save(user);
-
-//    Iterable<Robot> itr = robotService.allRobots();
-//    for (Robot r : itr) {
-//      log.info("product: " + r.getDescription());
-//    }
   }
 }

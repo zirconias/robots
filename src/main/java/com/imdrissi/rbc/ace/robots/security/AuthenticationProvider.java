@@ -1,6 +1,6 @@
 package com.imdrissi.rbc.ace.robots.security;
 
-import com.imdrissi.rbc.ace.robots.service.UserDetailsService;
+import com.imdrissi.rbc.ace.robots.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -13,8 +13,8 @@ import org.springframework.stereotype.Component;
 public class AuthenticationProvider extends DaoAuthenticationProvider {
 
   @Autowired
-  public void setUserDetailsService(UserDetailsService userDetailsService) {
-    super.setUserDetailsService(userDetailsService);
+  public void setUserDetailsService(UserDetailsServiceImpl userDetailsServiceImpl) {
+    super.setUserDetailsService(userDetailsServiceImpl);
     super.setPasswordEncoder(passwordEncoder());
   }
 

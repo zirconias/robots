@@ -1,6 +1,12 @@
 #ACE -  ROBOTS
 
 
+### frontend
+
+- [x] create angular app 
+- [ ] provide necessary UI
+- [ ] consumes backend REST API
+
 ### backend
 
 - [x] Create a backend java app using spring boot
@@ -16,4 +22,4 @@
 
 ### Stretch Goals:
 - [ ] deployment in cloud platform
-- [ ] authorization
+- [x] authorization

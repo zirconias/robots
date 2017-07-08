@@ -2,18 +2,15 @@ package com.imdrissi.rbc.ace.robots.domain;
 
 
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "USER")
-public class User extends BaseEntity implements UserDetails {
+public class User extends BaseEntity {
 
   @Id
   @Column(name = "ID")
@@ -29,7 +26,7 @@ public class User extends BaseEntity implements UserDetails {
   private boolean enabled = true;
 
 
-  @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+  @ManyToMany(fetch = FetchType.EAGER)
   @JoinTable(
     name = "USER_AUTHORITY",
     joinColumns = {@JoinColumn(name = "USER_ID", referencedColumnName = "ID")},
@@ -53,7 +50,7 @@ public class User extends BaseEntity implements UserDetails {
     this.userId = userId;
   }
 
-  @Override
+
   public String getUsername() {
     return username;
   }
@@ -62,13 +59,11 @@ public class User extends BaseEntity implements UserDetails {
     this.username = username;
   }
 
-  @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
-    Set<GrantedAuthority> authorities = new HashSet<>();
+    //Set<GrantedAuthority> authorities = new HashSet<>();
     return authorities;
   }
 
-  @Override
   public String getPassword() {
     return password;
   }
@@ -77,7 +72,6 @@ public class User extends BaseEntity implements UserDetails {
     this.password = password;
   }
 
-  @Override
   public boolean isEnabled() {
     return true;
   }
@@ -86,17 +80,14 @@ public class User extends BaseEntity implements UserDetails {
     this.enabled = enabled;
   }
 
-  @Override
   public boolean isAccountNonExpired() {
     return true;
   }
 
-  @Override
   public boolean isAccountNonLocked() {
     return true;
   }
 
-  @Override
   public boolean isCredentialsNonExpired() {
     return true;
   }

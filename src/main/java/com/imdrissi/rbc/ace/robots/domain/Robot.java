@@ -1,5 +1,7 @@
 package com.imdrissi.rbc.ace.robots.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 
@@ -11,6 +13,7 @@ public class Robot extends BaseEntity {
   private Long id;
 
   @Version
+  @JsonIgnore
   private Integer version;
 
   private String productId;

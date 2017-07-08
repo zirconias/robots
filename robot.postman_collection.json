@@ -1,0 +1,95 @@
+{
+	"variables": [],
+	"info": {
+		"name": "robot",
+		"_postman_id": "11c8c1ff-6fd6-2dc5-5e6c-e4f089985171",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get robot by id",
+			"request": {
+				"url": "http://localhost:8080/robot/168639393495335947",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic dXNlcjp1c2Vy",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "get robot by id"
+			},
+			"response": []
+		},
+		{
+			"name": "get all robots",
+			"request": {
+				"url": "http://localhost:8080/robot/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic dXNlcjp1c2Vy",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "get all robots"
+			},
+			"response": []
+		},
+		{
+			"name": "add new Robot",
+			"request": {
+				"url": "http://localhost:8080/robot",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic dXNlcjp1c2Vy",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"creationTime\": \"2017-07-08T21:36:24.840Z\",\n  \"deleted\": false,\n  \"description\": \"new robot 2\",\n  \"id\": 0,\n  \"imageUrl\": \"http://localhost.com/image2.jpg\",\n  \"modificationTime\": \"\",\n  \"price\": 16,\n  \"robotId\": \"RBT10101010\"\n}"
+				},
+				"description": "adds new robot to store"
+			},
+			"response": []
+		},
+		{
+			"name": "update Robot with robotId",
+			"request": {
+				"url": "http://localhost:8080/robot/168639393495335947",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic dXNlcjp1c2Vy",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"creationTime\": \"2017-07-08T21:36:24.840Z\",\n  \"deleted\": false,\n  \"description\": \"new robot 2\",\n  \"id\": 0,\n  \"imageUrl\": \"http://localhost.com/image2.jpg\",\n  \"modificationTime\": \"\",\n  \"price\": 16,\n  \"robotId\": \"RBT10101010\"\n}"
+				},
+				"description": "updates a robot with given robotId"
+			},
+			"response": []
+		}
+	]
+}

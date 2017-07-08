@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "AUTHORITY")
@@ -26,8 +25,8 @@ public class Authority extends BaseEntity implements GrantedAuthority {
     this.name = name;
   }
 
-  @ManyToMany(mappedBy = "authorities", fetch = FetchType.LAZY)
-  private List<User> users;
+//  @ManyToMany(mappedBy = "authorities", fetch = FetchType.LAZY)
+//  private List<User> users;
 
 
   @Override
@@ -53,11 +52,11 @@ public class Authority extends BaseEntity implements GrantedAuthority {
     this.id = id;
   }
 
-  public List<User> getUsers() {
-    return users;
-  }
-
-  public void setUsers(List<User> users) {
-    this.users = users;
-  }
+//  public List<User> getUsers() {
+//    return users;
+//  }
+//
+//  public void setUsers(List<User> users) {
+//    this.users = users;
+//  }
 }

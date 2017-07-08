@@ -22,4 +22,4 @@
 
 ### Stretch Goals:
 - [ ] deployment in cloud platform
-- [ ] authorization
+- [x] authorization

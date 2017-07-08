@@ -73,13 +73,13 @@ public class H2Bootstrap implements CommandLineRunner {
     robot1.setDescription("Guru");
     robot1.setPrice(new BigDecimal("18.95"));
     robot1.setImageUrl("http://www.mobile.guru/wp-content/uploads/2015/10/shutterstock_137265305.jpg");
-    robot1.setProductId("235268845711068308");
+    robot1.setRobotId("235268845711068308");
     robotService.saveRobot(robot1);
 
     Robot robot2 = new Robot();
     robot2.setDescription("Guru pro");
     robot2.setImageUrl("http://orig04.deviantart.net/fae7/f/2014/292/7/3/retro_robot_meditation___free_vector_by_pixaroma-d83i1t9.png");
-    robot2.setProductId("168639393495335947");
+    robot2.setRobotId("168639393495335947");
     robot2.setPrice(new BigDecimal("11.95"));
     robotService.saveRobot(robot2);
 

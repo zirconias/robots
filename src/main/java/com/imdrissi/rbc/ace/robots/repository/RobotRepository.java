@@ -9,11 +9,11 @@ import java.util.List;
 
 public interface RobotRepository extends JpaRepository<Robot, Long> {
 
-  void deleteByProductId(String productId);
+  void deleteByRobotId(String robotId);
 
   @Modifying
-  @Query("update #{#entityName} e set e.deleted=true where e.productId=?1")
-  void softDeleteByProductId(String productId);
+  @Query("update #{#entityName} e set e.deleted=true where e.robotId=?1")
+  void softDeleteByRobotId(String robotId);
 
   @Query("select e from #{#entityName} e where e.deleted=false")
   public List<Robot> findAllNotDeleted();
@@ -21,4 +21,5 @@ public interface RobotRepository extends JpaRepository<Robot, Long> {
   @Query("select e from #{#entityName} e where e.deleted=true")
   public List<Robot> findBin();
 
+  Robot findByRobotId(String robotId);
 }

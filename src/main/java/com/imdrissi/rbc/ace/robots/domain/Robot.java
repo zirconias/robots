@@ -16,7 +16,7 @@ public class Robot extends BaseEntity {
   @JsonIgnore
   private Integer version;
 
-  private String productId;
+  private String robotId;
   private String description;
   private String imageUrl;
   private BigDecimal price;
@@ -25,8 +25,8 @@ public class Robot extends BaseEntity {
     super();
   }
 
-  public Robot(String productId, String description, String imageUrl, BigDecimal price) {
-    this.productId = productId;
+  public Robot(String robotId, String description, String imageUrl, BigDecimal price) {
+    this.robotId = robotId;
     this.description = description;
     this.imageUrl = imageUrl;
     this.price = price;
@@ -56,12 +56,12 @@ public class Robot extends BaseEntity {
     this.id = id;
   }
 
-  public String getProductId() {
-    return productId;
+  public String getRobotId() {
+    return robotId;
   }
 
-  public void setProductId(String productId) {
-    this.productId = productId;
+  public void setRobotId(String robotId) {
+    this.robotId = robotId;
   }
 
   public String getImageUrl() {

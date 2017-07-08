@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
@@ -56,11 +57,11 @@ public class H2Bootstrap implements CommandLineRunner {
     userAuthorities.add(auth3);
 
 
-    User admin = new User("admin", "admin");
+    User admin = new User("admin", new BCryptPasswordEncoder().encode("admin"));
     admin.setAuthorities(adminAuthorities);
     userRepository.save(admin);
 
-    User user = new User("user", "user");
+    User user = new User("user", new BCryptPasswordEncoder().encode("user"));
     admin.setAuthorities(adminAuthorities);
     userRepository.save(user);
 

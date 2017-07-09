@@ -1,6 +1,7 @@
 package com.imdrissi.rbc.ace.robots.config;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -25,8 +26,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Override
   public void configure(final HttpSecurity http) throws Exception {
-    http.httpBasic().and()
-      .csrf().disable();
+    http.httpBasic().and().csrf().disable();
+
+    http.authorizeRequests().antMatchers(HttpMethod.GET, "/", "/**/*.html", "/**/*.{png,jpg,jpeg,svg.ico}", "/**/*.css", "/**/*.js").permitAll();
+    http.authorizeRequests().antMatchers(HttpMethod.OPTIONS, "/**").permitAll();
+
     http.authorizeRequests().anyRequest().authenticated();
 
     http.headers().frameOptions().disable();

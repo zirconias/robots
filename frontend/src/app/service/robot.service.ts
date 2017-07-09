@@ -5,8 +5,8 @@ import "rxjs/add/operator/map";
 
 @Injectable()
 export class RobotService {
-  // private _username: string = 'admin';
-  // private _password: string = 'admin';
+  private _username: string = 'admin';
+  private _password: string = 'admin';
 
   constructor(private http: Http) {
   }
@@ -14,10 +14,11 @@ export class RobotService {
   getAll(): Observable<any> {
     //Basic dXNlcjp1c2Vy
     //headers.append('Authorization', 'Basic dXNlcjp1c2Vy');
-    
+
     let headers = new Headers({'Accept': 'application/json'});
-    headers.append('Authorization', 'Basic dXNlcjp1c2Vy');
+    //headers.append('Authorization', 'Basic dXNlcjp1c2Vy');
     headers.append('Access-Control-Allow-Origin', '*');
+    headers.append("Authorization", "Basic " + btoa(this._username + ":" + this._password));
 
 
     let options = new RequestOptions({headers: headers, withCredentials: true});

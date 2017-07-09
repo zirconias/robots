@@ -1,0 +1,15 @@
+<md-card>
+  <md-card-header>
+    <md-card-title><b>{{productId}}</b></md-card-title>
+    <md-card-subtitle>{{description}}</md-card-subtitle>
+  </md-card-header>
+  <img md-card-image [src]="imageUrl">
+  <md-card-content>
+    <p>
+      {{price}}
+    </p>
+  </md-card-content>
+  <md-card-actions>
+    <button md-raised-button color="primary" (click)="onButtonClick()">click</button>
+  </md-card-actions>
+</md-card>

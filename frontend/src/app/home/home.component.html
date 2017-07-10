@@ -1,3 +1,33 @@
 <div class="content" fxLayout="row" fxLayoutAlign="center none">
-  <app-robot-list></app-robot-list>
+
+  <app-robot-card
+    fxFlex
+    productId="productid01"
+    description="description produit 01"
+    imageUrl="assets/image/foo.png"
+    price="44$"
+    (robotClick)="$event"
+  >
+  </app-robot-card>
+
+  <app-robot-card
+    fxFlex
+    productId="productid02"
+    description="description produit 02"
+    imageUrl="assets/image/admin.png"
+    price="14$"
+    (robotClick)="$event"
+  >
+  </app-robot-card>
+
+  <app-robot-card
+    fxFlex
+    productId="productid03"
+    description="description produit 03"
+    imageUrl="assets/image/user.png"
+    price="99$"
+    (robotClick)="$event"
+  >
+  </app-robot-card>
+
 </div>

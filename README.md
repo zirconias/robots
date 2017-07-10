@@ -1,5 +1,5 @@
 #ACE -  ROBOTS
-
+![alt travis build](https://travis-ci.org/zirconias/robots.svg?branch=master)
 
 ### frontend
 

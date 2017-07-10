@@ -4,6 +4,7 @@ target/
 frontend/dist
 frontend/node_modules/
 frontend/package-lock.json
+src/main/resources/static
 
 #maven frontend plugin
 frontend/node/

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 
+@CrossOrigin
 @Api(basePath = "/robot", value = "Robot", description = "Robot operations", produces = "application/json")
 @RestController
 @RequestMapping(value = "/robot", produces = MediaType.APPLICATION_JSON_VALUE)

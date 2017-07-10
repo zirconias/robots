@@ -7,10 +7,10 @@
 
   <div class="right">
     <button *ngIf="!hasSignedIn()" routerLink="/login" md-button md-ripple>
-      <span>Login</span>
+      <span>connexion</span>
     </button>
     <button class="greeting-button" *ngIf="hasSignedIn()" md-button md-ripple>
-      <span>bonjour, {{userName()}}</span>
+      <span>Bienvenue {{userName()}}</span>
     </button>
     <button *ngIf="hasSignedIn()" (click)="logout()" md-button md-ripple>
       <span>Logout</span>

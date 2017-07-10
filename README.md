@@ -5,7 +5,7 @@
 
 - [x] create angular app 
 - [ ] provide necessary UI
-- [ ] consumes backend REST API
+- [x] consumes backend REST API
 
 ### backend
 

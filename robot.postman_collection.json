@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "robot",
-		"_postman_id": "11c8c1ff-6fd6-2dc5-5e6c-e4f089985171",
+		"_postman_id": "6d149982-9600-687c-44b2-c49ab2825cff",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -19,7 +19,10 @@
 						"description": ""
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": "get robot by id"
 			},
 			"response": []
@@ -36,7 +39,10 @@
 						"description": ""
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": "get all robots"
 			},
 			"response": []
@@ -88,6 +94,23 @@
 					"raw": "{\n  \"creationTime\": \"2017-07-08T21:36:24.840Z\",\n  \"deleted\": false,\n  \"description\": \"new robot 2\",\n  \"id\": 0,\n  \"imageUrl\": \"http://localhost.com/image2.jpg\",\n  \"modificationTime\": \"\",\n  \"price\": 16,\n  \"robotId\": \"RBT10101010\"\n}"
 				},
 				"description": "updates a robot with given robotId"
+			},
+			"response": []
+		},
+		{
+			"name": "whoami",
+			"request": {
+				"url": "http://localhost:8080/auth/user",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic bWFuYWdlcjptYW5hZ2Vy",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "returns authenticated User"
 			},
 			"response": []
 		}

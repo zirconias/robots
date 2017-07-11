@@ -10,11 +10,11 @@ export class RobotsService {
               private config: ConfigService) {
   }
 
-  getRobots(user) {
-    let headers = new Headers();
-    headers.append("Authorization", "Basic " + btoa(user._username + ":" + user._password));
-    let options = new RequestOptions({headers: headers, withCredentials: true});
-
+  getRobots() {
+    let headers = new Headers({
+      'Accept': 'application/json'
+    });
+    let options = new RequestOptions({headers: headers, withCredentials: false});
     return this.apiService.get(this.config.robots_url, options);
   }
 

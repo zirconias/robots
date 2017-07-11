@@ -25,8 +25,12 @@ public class RobotController {
 
   private static final Logger log = LoggerFactory.getLogger(RobotController.class);
 
+  private RobotService robotService;
+
   @Autowired
-  RobotService robotService;
+  public RobotController(RobotService robotService) {
+    this.robotService = robotService;
+  }
 
   @ApiOperation(value = "test endpoint", notes = "check if endpoint is working")
   @PreAuthorize("hasAnyAuthority('ADMIN','MANAGER','USER')")
@@ -44,6 +48,7 @@ public class RobotController {
   @ApiOperation(value = "Get robot by id", notes = "returns a robot by id")
   @GetMapping("/{robotId}")
   ResponseEntity<Robot> getRobotByRobotId(@PathVariable String robotId) {
+    //todo:return not found..
     Robot r = robotService.getRobotByRobotId(robotId);
     return new ResponseEntity<Robot>(r, HttpStatus.OK);
   }

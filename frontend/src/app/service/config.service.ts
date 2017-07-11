@@ -11,7 +11,7 @@ export class ConfigService {
   private _logout_url = this._auth_url + '/logout';
 
   private _robot_url = '/robot';
-  private _robots_url: '/robot';
+  private _robots_url = '/robot';
 
   get api_url(): string {
     return this._api_url;
@@ -41,7 +41,7 @@ export class ConfigService {
     return this._robot_url;
   }
 
-  get robots_url() {
+  get robots_url(): string {
     return this._robots_url;
   }
 }

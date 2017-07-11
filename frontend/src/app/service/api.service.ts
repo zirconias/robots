@@ -24,17 +24,17 @@ export class ApiService {
         withCredentials: true
       }
     )
-      .map(this.extractData);
+      .map(ApiService.extractData);
   }
 
   get(path: string, options: RequestOptions): Observable<any> {
-    console.log('get request options:' + JSON.stringify(options));
+    console.log('path: ' + path + ' ' + 'request options:' + JSON.stringify(options));
     return this.http.get(
       path,
       options
     )
-      .map(this.extractData)
-      .catch(this.checkAuth.bind(this));
+      .map(ApiService.extractData)
+      .catch(ApiService.checkAuth.bind(this));
   }
 
   post(path: string, body, customHeaders?, put?): Observable<any> {
@@ -46,8 +46,8 @@ export class ApiService {
         headers: customHeaders || this.headers,
         withCredentials: true
       }
-    ).map(this.extractData)
-      .catch(this.checkAuth.bind(this));
+    ).map(ApiService.extractData)
+      .catch(ApiService.checkAuth.bind(this));
   }
 
   put(path: string, body: any): Observable<any> {
@@ -55,13 +55,13 @@ export class ApiService {
   }
 
 
-  private extractData(res: Response) {
+  private static extractData(res: Response) {
     const body = res.json();
     console.log('body::' + JSON.stringify(body));
     return body || {};
   }
 
-  private checkAuth(error: any) {
+  private static checkAuth(error: any) {
     if (error && error.status === 401) {
       console.log(401);
     } else {

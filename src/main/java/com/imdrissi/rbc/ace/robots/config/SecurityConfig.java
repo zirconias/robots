@@ -35,6 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
       .and().csrf().disable();
 
     http.authorizeRequests().antMatchers(HttpMethod.GET, "/", "/**/*.html", "/**/*.{png,jpg,jpeg,svg.ico}", "/**/*.css", "/**/*.js").permitAll();
+    http.authorizeRequests().antMatchers(HttpMethod.GET, "/robot").permitAll();
     http.authorizeRequests().antMatchers(
       "/swagger-ui.html", "/swagger-resources", "/swagger-resources/configuration/ui", "/swagger-resources/configuration/security",
       "/v2/api-docs", "/webjars/**").permitAll();
